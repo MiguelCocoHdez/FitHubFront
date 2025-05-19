@@ -1,0 +1,39 @@
+<div class="tarjeta-rol flex flex-col justify-center items-center border-2 border-gray-300 rounded-lg shadow-md p-12 gap-4 hover:shadow-lg transition-shadow duration-300 ease-in-out cursor-pointer max-w-sm h-[250px]" (click)="irRegistro()">
+    <div class="icono-tarjeta bg-green-100 rounded-full p-5">
+        @switch (icono) {
+            @case ("client") {
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-8 w-8 text-green-600"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    >
+                    <circle cx="12" cy="8" r="4" />
+                    <path d="M20 21a8 8 0 1 0-16 0" />
+                </svg>
+            }
+            @case ("trainer") {
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-8 w-8 text-green-600 rotate-40"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                    >
+                    <path d="M6.5 6.5v11M17.5 6.5v11" />
+                    <path d="M20 9v6M4 9v6" />
+                    <path d="M9 12h6" />
+                </svg>
+            }
+        }
+    </div>
+    <div class="titulo-tarjeta">
+        <h2 class="font-bold">{{titulo}}</h2>
+    </div>
+    <div class="subtitulo-tarjeta">
+        <p class="text-center">{{subtitulo}}</p>
+    </div>
+</div>
