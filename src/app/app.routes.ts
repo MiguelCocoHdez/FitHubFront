@@ -10,7 +10,11 @@ export const routes: Routes = [
             },
             {
                 path: 'trainer',
-                loadComponent: () => import('./pages/login/registro-trainer/registro-trainer.component').then(m => m.RegistroTrainerComponent)
+                loadComponent: () => import('./pages/login/registro-trainer/registro-trainer.component').then(m => m.RegistroTrainerComponent),
+            },
+            {
+                path: 'trainer/suscripcion',
+                loadComponent: () => import('./pages/login/eleccion-suscripcion/eleccion-suscripcion.component').then(m => m.EleccionSuscripcionComponent)         
             }
         ]
     }
