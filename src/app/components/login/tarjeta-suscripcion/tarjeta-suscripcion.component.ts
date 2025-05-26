@@ -45,6 +45,8 @@ export class TarjetaSuscripcionComponent {
       const authResponse = await firstValueFrom(this.authService.registrarUsuario(datosRegistroAuth))
       const token = authResponse.token
 
+      localStorage.setItem('token', token)
+
       //Registro en el trainer
       await firstValueFrom(this.trainerService.registrarTrainer(datosRegistroTrainer, token))
 

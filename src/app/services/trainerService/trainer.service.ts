@@ -1,12 +1,26 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { Client } from '../clientService/client.service';
 
 export interface RegistroTrainer {
   nombre: string
   apellidos: string
   tfno: string
   bio: string
+}
+
+export interface Trainer {
+  id: number
+  nombre: string
+  apellidos: string
+  email: string
+  tfno: number
+  bio: string
+  foto: string
+  fechacreacion: string
+  plan: string
+  clientes: Client[]
 }
 
 @Injectable({
@@ -23,6 +37,14 @@ export class TrainerService {
         Authorization: `Bearer ${token}`
       },
       responseType: 'text'
+    })
+  }
+
+  verTrainer(token: string) {
+    return this.http.get<Trainer>(`${this.apiUrl}/verTrainer`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
     })
   }
 }
