@@ -1,0 +1,50 @@
+@keyframes draw {
+    0% {
+        stroke-dasharray: 0 100;
+    }
+    100% {
+        stroke-dasharray: 100 0;
+    }
+}
+
+.animate-draw {
+    stroke-dasharray: 100;
+    animation: draw 1s ease-in-out 0.5s forwards;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out 0.3s both;
+}
+
+.animate-fade-in-up-delay {
+    animation: fadeInUp 0.8s ease-out 0.8s both;
+}
+
+.animate-fade-in-up-delay-2 {
+    animation: fadeInUp 0.8s ease-out 1.2s both;
+}
+
+
+@keyframes pulse-soft {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.check {
+    animation: pulse-soft 2s ease-in-out infinite;
+}

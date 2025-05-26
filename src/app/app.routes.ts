@@ -16,6 +16,24 @@ export const routes: Routes = [
                 path: 'trainer/suscripcion',
                 loadComponent: () => import('./pages/login/eleccion-suscripcion/eleccion-suscripcion.component').then(m => m.EleccionSuscripcionComponent)         
             }
+        ],
+    },
+    {
+        path: 'suscripcion',
+        children: [
+            {
+                path: 'success',
+                loadComponent: () => import('./pages/login/suscripcion-success/suscripcion-success.component').then(m => m.SuscripcionSuccessComponent)
+            }
+        ]
+    },
+    {
+        path: 'dashboard',
+        children: [
+            {
+                path: '',
+                loadComponent: () => import('./pages/trainer/dashboard-trainer/dashboard-trainer.component').then(m => m.DashboardTrainerComponent)
+            }
         ]
     }
 ];
