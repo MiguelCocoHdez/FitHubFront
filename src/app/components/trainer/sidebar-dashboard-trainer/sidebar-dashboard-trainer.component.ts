@@ -30,4 +30,9 @@ export class SidebarDashboardTrainerComponent implements OnInit {
   closeMenu(): void {
     this.menuOpen = false;
   }
+
+  botonLogout(): void {
+    localStorage.removeItem('token')
+    this.router.navigate(['/register'])
+  }
 }
