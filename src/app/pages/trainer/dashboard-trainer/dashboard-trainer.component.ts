@@ -2,10 +2,11 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { SidebarDashboardTrainerComponent } from "../../../components/trainer/sidebar-dashboard-trainer/sidebar-dashboard-trainer.component";
 import { Trainer, TrainerService } from '../../../services/trainerService/trainer.service';
 import { Router } from '@angular/router';
+import { CardsInfoDashboardComponent } from "../../../components/trainer/cards-info-dashboard/cards-info-dashboard.component";
 
 @Component({
   selector: 'app-dashboard-trainer',
-  imports: [SidebarDashboardTrainerComponent],
+  imports: [SidebarDashboardTrainerComponent, CardsInfoDashboardComponent],
   templateUrl: './dashboard-trainer.component.html',
   styleUrl: './dashboard-trainer.component.css'
 })
@@ -17,8 +18,6 @@ export class DashboardTrainerComponent implements OnInit {
   
   ngOnInit(): void {
     const token = localStorage.getItem('token')
-
-    console.log('Token guardado:', token)
 
     if(token) {
       this.trainerService.verTrainer(token).subscribe({

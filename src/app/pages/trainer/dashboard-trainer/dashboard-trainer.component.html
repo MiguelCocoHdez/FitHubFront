@@ -2,4 +2,35 @@
     <app-sidebar-dashboard-trainer 
     [trainer]="trainer"
     />
+    <div class="contenido-dashboard ml-6 mr-6 mt-20 md:ml-32 md:mt-0 lg:ml-66 lg:mt-0">
+        <div class="container-cards mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-4">
+            <app-cards-info-dashboard 
+            titulo="Clientes"
+            icono="users"
+            [valor]="trainer.clientes.length"
+            subtitulo="Clientes activos"
+            />
+
+            <app-cards-info-dashboard 
+            titulo="Clientes"
+            icono="users"
+            [valor]="trainer.clientes.length"
+            subtitulo="Clientes activos"
+            />
+
+            <app-cards-info-dashboard 
+            titulo="Clientes"
+            icono="users"
+            [valor]="trainer.clientes.length"
+            subtitulo="Clientes activos"
+            />
+
+            <app-cards-info-dashboard 
+            titulo="Clientes"
+            icono="users"
+            [valor]="trainer.clientes.length"
+            subtitulo="Clientes activos"
+            />
+        </div>
+    </div>
 }
