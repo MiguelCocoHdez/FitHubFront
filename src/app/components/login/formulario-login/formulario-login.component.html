@@ -1,0 +1,51 @@
+<div class="container-pagina-formulario flex justify-center items-center">
+  <div class="container-formulario border-2 border-gray-300 rounded-lg shadow-md max-w-3xl p-8 w-[75%]">
+    <form [formGroup]="formularioLogin" class="max-w-md mx-auto">
+      
+      <!-- Email -->
+      <div class="relative z-0 w-full mb-5 group">
+        <input formControlName="email" type="email" id="floating_email"
+          class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+          placeholder=" " />
+        <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Correo Electrónico *</label>
+        
+        @if(formularioLogin.get('email')?.invalid && formularioLogin.get('email')?.touched) {
+                    @if(formularioLogin.get('email')?.errors?.['required']) {
+                        <div class="text-red-500 text-sm mt-1">El correo electrónico es obligatorio.</div>
+                    }
+
+                    @if(formularioLogin.get('email')?.errors?.['pattern']) {
+                        <div class="text-red-500 text-sm mt-1">El correo electrónico no es válido.</div>
+                    }
+        }
+        @if(flagCorreo) {
+            <div class="text-red-500 text-sm mt-1">{{mensajeCorreo}}</div>
+        }
+      </div>
+
+      <!-- Contraseña -->
+      <div class="relative z-0 w-full mb-5 group">
+        <input formControlName="contraseña" type="password" id="floating_password"
+          class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+          placeholder=" " />
+        <label for="floating_password" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Contraseña *</label>
+        
+        @if(formularioLogin.get('contraseña')?.invalid && formularioLogin.get('contraseña')?.touched) {
+            @if(formularioLogin.get('contraseña')?.errors?.['required']) {
+                <div class="text-red-500 text-sm mt-1">La contraseña es obligatoria.</div>
+            }
+
+            @if(formularioLogin.get('contraseña')?.errors?.['minlength']) {
+                <div class="text-red-500 text-sm mt-1">La contraseña debe tener al menos 6 caracteres.</div>
+            }
+        }
+
+        @if(flagContra) {
+            <div class="text-red-500 text-sm mt-1">{{mensajeContra}}</div>
+        }
+      </div>
+
+      <button (click)="irAlDashboard()" type="submit" class="cursor-pointer w-full mt-4 bg-green-600 text-white font-bold py-2 rounded-lg hover:bg-blue-700 transition">Iniciar sesión</button>
+    </form>
+  </div>
+</div>

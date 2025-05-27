@@ -19,6 +19,15 @@ export const routes: Routes = [
         ],
     },
     {
+        path: 'login',
+        children: [
+            {
+                path: '',
+                loadComponent: () => import('./pages/login/login-page/login-page.component').then(m => m.LoginPageComponent)
+            }
+        ]
+    },
+    {
         path: 'suscripcion',
         children: [
             {
@@ -28,10 +37,10 @@ export const routes: Routes = [
         ]
     },
     {
-        path: 'dashboard',
+        path: 'trainer',
         children: [
             {
-                path: '',
+                path: 'dashboard',
                 loadComponent: () => import('./pages/trainer/dashboard-trainer/dashboard-trainer.component').then(m => m.DashboardTrainerComponent)
             }
         ]

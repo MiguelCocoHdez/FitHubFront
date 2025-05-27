@@ -34,7 +34,7 @@ export class DashboardTrainerComponent implements OnInit {
       })
     }
     else {
-      //this.router.navigate(['/register'])
+      this.router.navigate(['/register'])
     }
   }
 }

@@ -12,6 +12,6 @@ export class ConfirmacionPagoComponent {
   constructor(private route: Router) {}
 
   irAlDashboard() {
-    this.route.navigate(['/dashboard'])
+    this.route.navigate(['/trainer/dashboard'])
   }
 }

@@ -9,8 +9,18 @@ export interface RegistroAuth {
   rol: string
 }
 
+export interface Login {
+  email: string
+  contraseña: string
+}
+
 export interface AuthTokenResponse {
   token: string
+}
+
+export interface LoginResponse {
+  token: string
+  rol: string
 }
 
 @Injectable({
@@ -23,5 +33,9 @@ export class AuthService {
 
   registrarUsuario(usuario: RegistroAuth) {
     return this.http.post<AuthTokenResponse>(`${this.apiUrl}/register`, usuario);
+  }
+
+  loginUsuario(login: Login) {
+    return this.http.post<LoginResponse>(`${this.apiUrl}/login`, login);
   }
 }

@@ -33,6 +33,6 @@ export class SidebarDashboardTrainerComponent implements OnInit {
 
   botonLogout(): void {
     localStorage.removeItem('token')
-    this.router.navigate(['/register'])
+    this.router.navigate(['/login'])
   }
 }
