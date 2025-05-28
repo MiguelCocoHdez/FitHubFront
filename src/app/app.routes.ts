@@ -13,6 +13,10 @@ export const routes: Routes = [
                 loadComponent: () => import('./pages/login/registro-trainer/registro-trainer.component').then(m => m.RegistroTrainerComponent),
             },
             {
+                path: 'client',
+                loadComponent: () => import('./pages/login/registro-client/registro-client.component').then(m => m.RegistroClientComponent)
+            },
+            {
                 path: 'trainer/suscripcion',
                 loadComponent: () => import('./pages/login/eleccion-suscripcion/eleccion-suscripcion.component').then(m => m.EleccionSuscripcionComponent)         
             }
@@ -43,6 +47,19 @@ export const routes: Routes = [
                 path: 'dashboard',
                 loadComponent: () => import('./pages/trainer/dashboard-trainer/dashboard-trainer.component').then(m => m.DashboardTrainerComponent)
             }
+        ]
+    },
+    {
+        path: 'client',
+        children: [
+            {
+                path: 'dashboard',
+                loadComponent: () => import('./pages/client/dashboard-client/dashboard-client.component').then(m => m.DashboardClientComponent)
+            },
+            {
+                path: 'buscar-trainer',
+                loadComponent: () => import('./pages/client/buscar-trainer/buscar-trainer.component').then(m => m.BuscarTrainerComponent)
+            },
         ]
     }
 ];
