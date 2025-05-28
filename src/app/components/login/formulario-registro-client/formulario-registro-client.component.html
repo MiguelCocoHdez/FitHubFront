@@ -1,0 +1,144 @@
+<div class="container-pagina-formulario flex justify-center align-items-center">
+    <div class="container-formulario border-2 border-gray-300 rounded-lg shadow-md max-w-3xl mb-15 p-8 w-[75%]">
+        <form [formGroup]="registroClient" class="max-w-md mx-auto">
+            <div class="relative z-0 w-full mb-5 group">
+                <input formControlName="email" type="email" name="floating_email" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Correo Electrónico *</label>
+                @if(registroClient.get('email')?.invalid && registroClient.get('email')?.touched) {
+                    @if(registroClient.get('email')?.errors?.['required']) {
+                        <div class="text-red-500 text-sm mt-1">El correo electrónico es obligatorio.</div>
+                    }
+
+                    @if(registroClient.get('email')?.errors?.['pattern']) {
+                        <div class="text-red-500 text-sm mt-1">El correo electrónico no es válido.</div>
+                    }
+                }
+            </div>
+
+            <div class="grid md:grid-cols-2 md:gap-6">
+                <div class="relative z-0 w-full mb-5 group">
+                    <input formControlName="contraseña" type="password" name="floating_password" id="floating_password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                    <label for="floating_password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Contraseña *</label>
+                    @if(registroClient.get('contraseña')?.invalid && registroClient.get('contraseña')?.touched) {
+                        @if(registroClient.get('contraseña')?.errors?.['required']) {
+                            <div class="text-red-500 text-sm mt-1">La contraseña es obligatoria.</div>
+                        }
+
+                        @if(registroClient.get('contraseña')?.errors?.['minlength']) {
+                            <div class="text-red-500 text-sm mt-1">La contraseña debe tener al menos 6 caracteres.</div>
+                        }
+                    }
+                </div>
+                <div class="relative z-0 w-full mb-5 group">
+                    <input formControlName="repetirContraseña" type="password" name="repeat_password" id="floating_repeat_password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                    <label for="floating_repeat_password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Confirmar contraseña *</label>
+                    @if(registroClient.get('repetirContraseña')?.invalid && registroClient.get('repetirContraseña')?.touched) {
+                        @if(registroClient.get('repetirContraseña')?.errors?.['required']) {
+                            <div class="text-red-500 text-sm mt-1">La confirmación de contraseña es obligatoria.</div>
+                        }
+
+                        @if(registroClient.hasError('noCoincide') && registroClient.get('repetirContraseña')?.touched) {
+                            <div class="text-red-500 text-sm mt-1">La contraseña no coincide.</div>
+                        }
+                    }
+                </div>
+            </div>
+        
+            <div class="grid md:grid-cols-2 md:gap-6">
+                <div class="relative z-0 w-full mb-5 group">
+                    <input formControlName="nombre" type="text" name="floating_first_name" id="floating_first_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                    <label for="floating_first_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nombre *</label>
+                    @if(registroClient.get('nombre')?.invalid && registroClient.get('nombre')?.touched) {
+                        @if(registroClient.get('nombre')?.errors?.['required']) {
+                            <div class="text-red-500 text-sm mt-1">El nombre es obligatorio.</div>
+                        }
+
+                        @if(registroClient.get('nombre')?.errors?.['minlength']) {
+                            <div class="text-red-500 text-sm mt-1">El nombre debe tener al menos 3 caracteres.</div>
+                        }
+                    }
+                </div>
+                <div class="relative z-0 w-full mb-5 group">
+                    <input formControlName="apellidos" type="text" name="floating_last_name" id="floating_last_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                    <label for="floating_last_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Apellidos *</label>
+                    @if(registroClient.get('apellidos')?.invalid && registroClient.get('apellidos')?.touched) {
+                        @if(registroClient.get('apellidos')?.errors?.['required']) {
+                            <div class="text-red-500 text-sm mt-1">Los apellidos son obligatorios.</div>
+                        }
+
+                        @if(registroClient.get('apellidos')?.errors?.['minlength']) {
+                            <div class="text-red-500 text-sm mt-1">Los apellidos deben tener al menos 3 caracteres.</div>
+                        }
+                    }
+                </div>
+            </div>
+
+            
+            <div class="relative z-0 w-full mb-5 group">
+                <input formControlName="telefono" type="tel" name="floating_phone" id="floating_phone" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                <label for="floating_phone" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Teléfono *</label>
+                @if(registroClient.get('telefono')?.invalid && registroClient.get('telefono')?.touched) {
+                    @if(registroClient.get('telefono')?.errors?.['required']) {
+                        <div class="text-red-500 text-sm mt-1">El teléfono es obligatorio.</div>
+                    }
+
+                    @if(registroClient.get('telefono')?.errors?.['pattern']) {
+                        <div class="text-red-500 text-sm mt-1">El teléfono no es válido.</div>
+                    }
+                }
+            </div>
+            
+            <div class="relative z-0 w-full mb-5 group">
+                <input formControlName="nombreUsuario" type="text" name="floating_phone" id="floating_phone" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                <label for="floating_phone" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nombre de usuario *</label>
+                @if(registroClient.get('nombreUsuario')?.invalid && registroClient.get('nombreUsuario')?.touched) {
+                    @if(registroClient.get('nombreUsuario')?.errors?.['required']) {
+                        <div class="text-red-500 text-sm mt-1">El nombre de usuario es obligatorio.</div>
+                    }
+
+                    @if(registroClient.get('nombreUsuario')?.errors?.['minlength']) {
+                        <div class="text-red-500 text-sm mt-1">El nombre de usuario debe tener al menos 3 caracteres.</div>
+                    }
+                }
+            </div>
+
+            <label for="message" class="block mb-2 text-sm font-medium text-gray-900">Biografía: *</label>
+            <textarea formControlName="bio" id="message" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder=""></textarea>
+            @if(registroClient.get('bio')?.invalid && registroClient.get('bio')?.touched) {
+                @if(registroClient.get('bio')?.errors?.['required']) {
+                    <div class="text-red-500 text-sm mt-1">La biografía es obligatoria.</div>
+                }
+            }
+
+            <div class="relative z-0 w-full mb-5 mt-2 group">
+                <label for="underline_select" class="sr-only">Género *</label>
+                <select formControlName="genero" id="underline_select" class="cursor-pointer block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:border-gray-700 focus:outline-none focus:ring-0 peer">
+                    <option class="text-gray-500" value="" disabled selected>Género *</option>
+                    <option value="Hombre">Hombre</option>
+                    <option value="Mujer">Mujer</option>
+                    <option value="Otro">Otro</option>
+                </select>
+
+                @if(registroClient.get('genero')?.invalid && registroClient.get('genero')?.touched) {
+                    @if(registroClient.get('genero')?.errors?.['required']) {
+                        <div class="text-red-500 text-sm mt-1">El género es obligatorio.</div>
+                    }
+                }
+            </div>
+
+            <div class="flex items-center mb-4 mt-4">
+                <input formControlName="chekbox" id="checkbox-1" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500" >
+                <label for="checkbox-1" class="ms-2 text-sm font-medium text-gray-900">Estoy de acuerdo con los <a href="#" class="text-blue-600 hover:underline">terminos y condiciones</a>.</label>
+            </div>
+            <div class="error-checkbox mb-4">
+                    @if(registroClient.get('chekbox')?.invalid && registroClient.get('chekbox')?.touched) {
+                        @if(registroClient.get('chekbox')?.errors?.['required']) {
+                            <div class="text-red-500 text-sm mt-1">Debes aceptar los términos y condiciones.</div>
+                        }
+                    }
+                </div>
+
+            <button (click)="irADashboard()" type="button" class="text-white bg-green-600 hover:bg-green-800 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center cursor-pointer">Submit</button>
+        </form>
+    </div>
+</div>

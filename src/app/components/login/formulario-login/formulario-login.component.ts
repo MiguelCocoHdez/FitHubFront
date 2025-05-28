@@ -40,7 +40,9 @@ export class FormularioLoginComponent implements OnInit {
             this.router.navigate(['/trainer/dashboard'])
           }
 
-          //Hacer navigate de cliente a su dashboard
+          if(response.rol == 'USER') {
+            this.router.navigate(['/client/dashboard'])
+          }
         },
         error: (error) => {
           console.log(error)
