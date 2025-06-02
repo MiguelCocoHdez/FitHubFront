@@ -30,6 +30,7 @@ export class DashboardClientComponent implements OnInit {
         },
         error: (error) => {
           console.error('Error al obtener el cliente:', error)
+          this.router.navigate(['/login'])
         }
       });
     } else {

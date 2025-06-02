@@ -36,6 +36,10 @@ export class SidebarDashboardClientComponent implements OnInit {
     this.router.navigate(['/login'])
   }
 
+  irADashboard(): void {
+    this.router.navigate(['/client/dashboard'])
+  }
+
   irABuscarTrainer(): void {
     this.router.navigate(['/client/buscar-trainer']);
   }
