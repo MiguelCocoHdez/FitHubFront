@@ -23,6 +23,17 @@ export interface Trainer {
   clientes: Client[]
 }
 
+export interface TrainerSinClient {
+  id: number
+  nombre: string
+  apellidos: string
+  email: string
+  tfno: number
+  bio: string
+  foto: string
+  fechacreacion: string
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -46,5 +57,9 @@ export class TrainerService {
         Authorization: `Bearer ${token}`
       }
     })
+  }
+
+  verTodosTrainers() {
+    return this.http.get<TrainerSinClient[]>(`${this.apiUrl}/verTodosTrainers`);
   }
 }
