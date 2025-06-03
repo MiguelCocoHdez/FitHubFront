@@ -1,4 +1,4 @@
-<div id="modal-conectar-trainer" tabindex="-1" aria-hidden="true" class="flex overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+<div id="modal-conectar-trainer" tabindex="-1" class="flex overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative p-4 w-full max-w-2xl max-h-full">
         <!-- Modal content -->
         <div class="relative bg-white rounded-lg shadow-sm">
@@ -26,8 +26,8 @@
             </div>
             <div class="mensaje-al-trainer p-4">
                 <p class="font-bold text-[14px]">Mensaje de solicitud: </p>
-                <form>
-                    <textarea class="min-h-[100px] w-full mt-2 rounded-2xl border-gray-400" placeholder="Escribe tu mensaje aquí... (ej: Hola, me interesa entrenar contigo. ¿Podrías ayudarme con...?)" name="mensaje-trainer" id="mensaje-trainer"></textarea>
+                <form [formGroup]="formularioMensaje">
+                    <textarea formControlName="mensaje" class="min-h-[100px] w-full mt-2 rounded-2xl border-gray-400" placeholder="Escribe tu mensaje aquí... (ej: Hola, me interesa entrenar contigo. ¿Podrías ayudarme con...?)" name="mensaje-trainer" id="mensaje-trainer"></textarea>
                 </form>
             </div>
             <!-- Modal footer -->
