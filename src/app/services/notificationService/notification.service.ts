@@ -27,4 +27,15 @@ export class NotificationService {
       }
     })
   }
+
+  rechazarPeticion(idPeticion: number, token: string) {
+    return this.http.put(`${this.apiUrl}/rechazarPeticion`,{} , {
+      params: {
+        idPeticion: idPeticion
+      },
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+  }
 }

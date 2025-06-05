@@ -13,15 +13,32 @@ import { CardsSolicitudesClientesComponent } from "../../../components/trainer/c
 export class SolicitudesClientesComponent implements OnInit {
 
   trainer!: Trainer
+  token!: string
   notificaciones!: NotificacionesTrainer[]
 
   constructor(private notificationService: NotificationService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.trainer = JSON.parse(localStorage.getItem('trainer') || '{}')
-    const token = localStorage.getItem('token') || ''
+    this.token = localStorage.getItem('token') || ''
 
-    this.notificationService.verNotificacionesTrainer(this.trainer.id, token).subscribe({
+    this.notificationService.verNotificacionesTrainer(this.trainer.id, this.token).subscribe({
+      next: (data) => {
+        this.notificaciones = data
+        this.cdr.detectChanges()
+        console.log(this.notificaciones)
+      },
+      error: (error) => {
+        console.error('Error al obtener las notificaciones:', error)
+      }
+    })
+  }
+
+  recargarNotificaciones() {
+    this.trainer = JSON.parse(localStorage.getItem('trainer') || '{}')
+    this.token = localStorage.getItem('token') || ''
+
+    this.notificationService.verNotificacionesTrainer(this.trainer.id, this.token).subscribe({
       next: (data) => {
         this.notificaciones = data
         this.cdr.detectChanges()

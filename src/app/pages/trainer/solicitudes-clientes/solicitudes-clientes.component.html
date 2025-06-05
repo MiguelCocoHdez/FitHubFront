@@ -13,6 +13,9 @@
                 <app-cards-solicitudes-clientes
                 [client]="notificacion.cliente"
                 [mensaje]="notificacion.mensaje"
+                [idPeticion]="notificacion.id"
+                [token]="token"
+                (solicitudRechazada)="recargarNotificaciones()"
                 />
             }
         </div>
