@@ -1,20 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Trainer } from '../../../services/trainerService/trainer.service';
 import { SidebarDashboardTrainerComponent } from "../../../components/trainer/sidebar-dashboard-trainer/sidebar-dashboard-trainer.component";
+import { NotificacionesTrainer, NotificationService } from '../../../services/notificationService/notification.service';
+import { CardsSolicitudesClientesComponent } from "../../../components/trainer/cards-solicitudes-clientes/cards-solicitudes-clientes.component";
 
 @Component({
   selector: 'app-solicitudes-clientes',
-  imports: [SidebarDashboardTrainerComponent],
+  imports: [SidebarDashboardTrainerComponent, CardsSolicitudesClientesComponent],
   templateUrl: './solicitudes-clientes.component.html',
   styleUrl: './solicitudes-clientes.component.css'
 })
 export class SolicitudesClientesComponent implements OnInit {
 
   trainer!: Trainer
+  notificaciones!: NotificacionesTrainer[]
+
+  constructor(private notificationService: NotificationService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.trainer = JSON.parse(localStorage.getItem('trainer') || '{}')
+    const token = localStorage.getItem('token') || ''
 
-    console.log(this.trainer)
+    this.notificationService.verNotificacionesTrainer(this.trainer.id, token).subscribe({
+      next: (data) => {
+        this.notificaciones = data
+        this.cdr.detectChanges()
+        console.log(this.notificaciones)
+      },
+      error: (error) => {
+        console.error('Error al obtener las notificaciones:', error)
+      }
+    })
   }
 }
