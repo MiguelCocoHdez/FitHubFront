@@ -17,8 +17,18 @@ export class TarjetaBuscarTrainerComponent {
   @Input() client!: Client
 
   mostrarModal = signal(false)
+  mostrarNotificacion: Boolean = false
 
   accionModal() {
     this.mostrarModal.update((valor) => !valor)
+  }
+
+  mostrarNotificacionPeticionEnviada() {
+    this.mostrarNotificacion = true
+
+    setTimeout(() => {
+      this.mostrarNotificacion = false
+      this.cdr.detectChanges()
+    }, 3000)
   }
 }

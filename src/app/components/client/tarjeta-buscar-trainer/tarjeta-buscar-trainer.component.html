@@ -70,5 +70,12 @@
 
 @if(mostrarModal()) {
     <div class="fixed inset-0 bg-black opacity-80 z-50"></div>
-    <app-modal-conectar-trainer [trainer]="trainer" [client]="client" (close)="accionModal()" />
+    <app-modal-conectar-trainer [trainer]="trainer" [client]="client" (close)="accionModal()" (notificar)="mostrarNotificacionPeticionEnviada()" />
+}
+
+@if(mostrarNotificacion) {
+    <div class="fixed bottom-6 right-6 z-[9999] bg-white shadow-sm px-6 py-3 rounded-md transition-opacity w-[90%] md:w-[20%] flex flex-col gap-4">
+        <h3 class="font-bold">¡Solicitud enviada!</h3>
+        <p>Tu solicitud ha sido enviada a {{trainer.nombre}} {{trainer.apellidos}}. Se te notificará si acepta la petición.</p>
+    </div>
 }

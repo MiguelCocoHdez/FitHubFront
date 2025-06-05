@@ -19,6 +19,7 @@ export class ModalConectarTrainerComponent implements OnInit {
   @Input() trainer!: TrainerSinClient
   @Input() client!: Client
   @Output() close = new EventEmitter<void>()
+  @Output() notificar = new EventEmitter<void>()
 
   ngOnInit(): void {
     this.formularioMensaje = this.fb.group({
@@ -28,6 +29,10 @@ export class ModalConectarTrainerComponent implements OnInit {
 
   cerrarModal() {
     this.close.emit()
+  }
+
+  notificarUsuario() {
+    this.notificar.emit()
   }
 
   enviarPeticion() {
@@ -43,6 +48,7 @@ export class ModalConectarTrainerComponent implements OnInit {
       next: (response) => {
         console.log('Solicitud de conexión enviada:', response)
         this.cerrarModal()
+        this.notificarUsuario()
       },
       error: (error) => {
         console.error('Error al enviar la solicitud de conexión:', error)
