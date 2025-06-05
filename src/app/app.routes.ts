@@ -46,6 +46,10 @@ export const routes: Routes = [
             {
                 path: 'dashboard',
                 loadComponent: () => import('./pages/trainer/dashboard-trainer/dashboard-trainer.component').then(m => m.DashboardTrainerComponent)
+            },
+            {
+                path: 'solicitudes-clientes',
+                loadComponent: () => import('./pages/trainer/solicitudes-clientes/solicitudes-clientes.component').then(m => m.SolicitudesClientesComponent)
             }
         ]
     },

@@ -35,4 +35,12 @@ export class SidebarDashboardTrainerComponent implements OnInit {
     localStorage.removeItem('token')
     this.router.navigate(['/login'])
   }
+
+  irADashboard(): void {
+    this.router.navigate(['/trainer/dashboard'])
+  }
+
+  irASolicitudesClientes(): void {
+    this.router.navigate(['/trainer/solicitudes-clientes'])
+  }
 }

@@ -23,6 +23,9 @@ export class DashboardTrainerComponent implements OnInit {
       this.trainerService.verTrainer(token).subscribe({
         next: (trainer) => {
           this.trainer = trainer
+
+          localStorage.setItem('trainer', JSON.stringify(this.trainer))
+
           console.log('Trainer obtenido:', this.trainer)
           
           this.cdr.detectChanges()
