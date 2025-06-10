@@ -28,6 +28,17 @@ export class NotificationService {
     })
   }
 
+  aceptarPeticion(idPeticion: number, token: string) {
+    return this.http.put(`${this.apiUrl}/aceptarPeticion`, {}, {
+      params: {
+        idPeticion: idPeticion
+      },
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+  }
+
   rechazarPeticion(idPeticion: number, token: string) {
     return this.http.put(`${this.apiUrl}/rechazarPeticion`,{} , {
       params: {

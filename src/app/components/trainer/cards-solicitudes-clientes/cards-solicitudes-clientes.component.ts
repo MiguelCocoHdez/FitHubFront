@@ -17,14 +17,27 @@ export class CardsSolicitudesClientesComponent {
   @Input() idPeticion!: number
   @Input() token!: string
 
-  @Output() solicitudRechazada = new EventEmitter<void>()
+  @Output() refrescarSolicitudes = new EventEmitter<void>()
+
+  aceptarCliente() {
+    this.notificationService.aceptarPeticion(this.idPeticion, this.token).subscribe({
+      next: (data) => {
+        console.log(data)
+        this.cdr.detectChanges()
+        this.refrescarSolicitudes.emit()
+      },
+      error: (error) => {
+        console.log("Error al aceptar la peticion", error)
+      }
+    })
+  }
 
   rechazarCliente() {
     this.notificationService.rechazarPeticion(this.idPeticion, this.token).subscribe({
       next: (data) => {
         console.log(data)
         this.cdr.detectChanges()
-        this.solicitudRechazada.emit()
+        this.refrescarSolicitudes.emit()
       },
       error: (error) => {
         console.log("Error al rechazar la peticion", error)
