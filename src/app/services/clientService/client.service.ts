@@ -12,6 +12,7 @@ export interface Client {
   foto: string
   fechacreacion: string
   genero: string
+  trainerid: number
 }
 
 export interface ClientRegister {
