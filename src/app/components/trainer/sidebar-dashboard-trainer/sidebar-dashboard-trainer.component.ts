@@ -40,6 +40,10 @@ export class SidebarDashboardTrainerComponent implements OnInit {
     this.router.navigate(['/trainer/dashboard'])
   }
 
+  irAMisClientes(): void {
+    this.router.navigate(['/trainer/mis-clientes'])
+  }
+
   irASolicitudesClientes(): void {
     this.router.navigate(['/trainer/solicitudes-clientes'])
   }

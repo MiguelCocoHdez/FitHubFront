@@ -50,6 +50,10 @@ export const routes: Routes = [
             {
                 path: 'solicitudes-clientes',
                 loadComponent: () => import('./pages/trainer/solicitudes-clientes/solicitudes-clientes.component').then(m => m.SolicitudesClientesComponent)
+            },
+            {
+                path: 'mis-clientes',
+                loadComponent: () => import('./pages/trainer/pagina-clientes/pagina-clientes.component').then(m => m.PaginaClientesComponent)
             }
         ]
     },
