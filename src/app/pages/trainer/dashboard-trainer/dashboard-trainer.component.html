@@ -2,8 +2,13 @@
     <app-sidebar-dashboard-trainer 
     [trainer]="trainer"
     />
-    <div class="contenido-dashboard ml-6 mr-6 mt-20 md:ml-0 md:mt-0 lg:ml-66 lg:mt-0">
-        <div class="container-cards mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-4">
+    <div class="contenido-dashboard ml-6 mr-6 mt-5 md:ml-0 lg:ml-70">
+        <div class="titulo-pagina-solicitudes">
+            <h1 class="text-2xl font-bold text-gray-800">Dashboard</h1>
+            <p class="text-gray-600 text-[14px] mt-2">Resumen general de tus clientes y estadísticas.</p>
+        </div>
+
+        <div class="container-cards mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <app-cards-info-dashboard 
             titulo="Clientes"
             icono="users"
