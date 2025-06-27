@@ -9,9 +9,11 @@
             <p class="text-gray-600 text-[14px] mt-2">Gestiona y comunícate con tus clientes.</p>
         </div>
 
-        <div class="container-tarjetas-cliente">
+        <div class="container-tarjetas-cliente mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
             @for(cliente of clientes; track $index) {
-                <app-cards-clientes />
+                <app-cards-clientes 
+                [cliente]="cliente"
+                />
             }
         </div>
     </div>
