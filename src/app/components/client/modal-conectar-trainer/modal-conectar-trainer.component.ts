@@ -44,7 +44,9 @@ export class ModalConectarTrainerComponent implements OnInit {
       mensaje: mensaje
     }
 
-    this.connectionService.crearSolicitudConexión(request).subscribe({
+    const token = localStorage.getItem('token') || ''
+
+    this.connectionService.crearSolicitudConexión(request, token).subscribe({
       next: (response) => {
         console.log('Solicitud de conexión enviada:', response)
         this.cerrarModal()

@@ -17,8 +17,11 @@ export class ConnectionService {
 
   constructor(private http: HttpClient) {}
 
-  crearSolicitudConexión(request: RequestConnection) {
-    return this.http.post(`${this.apiUrl}`, request, {
+  crearSolicitudConexión(request: RequestConnection, token: string) {
+    return this.http.post(`${this.apiUrl}/solicitarTrainer`, request, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
       responseType: 'text'
     })
   }
