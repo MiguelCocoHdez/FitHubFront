@@ -54,6 +54,10 @@ export const routes: Routes = [
             {
                 path: 'mis-clientes',
                 loadComponent: () => import('./pages/trainer/pagina-clientes/pagina-clientes.component').then(m => m.PaginaClientesComponent)
+            },
+            {
+                path: 'rutinas',
+                loadComponent: () => import('./pages/trainer/pagina-rutinas/pagina-rutinas.component').then(m => m.PaginaRutinasComponent)
             }
         ]
     },
