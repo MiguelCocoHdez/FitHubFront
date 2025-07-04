@@ -1,1 +1,12 @@
-<p>pagina-rutinas works!</p>
+@if(trainer) {
+    <app-sidebar-dashboard-trainer
+    [trainer]="trainer"
+    />
+
+    <div class="contenido-dashboard ml-6 mr-6 mt-5 md:ml-6 lg:ml-70">
+        <div class="titulo-pagina-solicitudes">
+            <h1 class="text-2xl font-bold text-gray-800">Rutinas de Entrenamiento</h1>
+            <p class="text-gray-600 text-[14px] mt-2">Gestiona y crea rutinas personalizadas.</p>
+        </div>
+    </div>
+}
