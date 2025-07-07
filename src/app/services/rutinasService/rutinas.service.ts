@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { environment } from '../../../environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 export interface Rutina {
   id: number
@@ -25,7 +27,20 @@ export interface Ejercicio {
 @Injectable({
   providedIn: 'root'
 })
-export class RutinasService {
 
-  constructor() { }
+export class RutinasService {
+  private apiUrl = environment.apiUrl + '/rutinas'
+
+  constructor(private http: HttpClient) {}
+
+  verRutinasTrainer(trainerId: number, token: string) {
+    return this.http.get<Rutina[]>(`${this.apiUrl}/verRutinasTrainer`, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      },
+      params: {
+        trainerId: trainerId
+      }
+    })
+  }
 }
