@@ -1,1 +1,74 @@
-<p>cards-rutinas works!</p>
+<div class="card-rutina rounded-lg border-gray-800 bg-white shadow-sm p-4 flex flex-col gap-6">
+    <div class="titulo-card flex items-center justify-between">
+        <div class="nombre-rutina pl-2">
+            <h1 class="font-bold text-[18px]">{{rutina.nombre}}</h1>
+        </div>
+        <div class="iconos-rutina flex items-center gap-3">
+            <div class="icono-editar cursor-pointer hover:bg-gray-100 rounded-md p-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-square-pen-icon lucide-square-pen">
+                    <path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                    <path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"/>
+                </svg>
+            </div>
+            <div class="icono-borrar cursor-pointer hover:bg-gray-100 rounded-md p-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-red-500">
+                    <path d="M10 11v6"/>
+                    <path d="M14 11v6"/>
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/>
+                    <path d="M3 6h18"/>
+                    <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <div class="descripcion-rutina pl-2">
+        <p class="text-gray-600 text-[14px]">{{rutina.descripcion}}</p>
+    </div>
+
+    <div class="indicaciones-rutina flex items-center gap-4 pl-2">
+        <div class="nivel rounded-lg bg-yellow-100 px-2 py-0.5 flex items-center gap-2">
+            <div class="icono">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-800">
+                    <circle cx="12" cy="12" r="10"/>
+                    <circle cx="12" cy="12" r="6"/>
+                    <circle cx="12" cy="12" r="2"/>
+                </svg>
+            </div>
+            <p class="text-[12px] text-yellow-800">{{rutina.nivel}}</p>
+        </div>
+
+        <div class="categoria rounded-4xl bg-blue-200 px-2 py-0.5 flex items-center gap-2">
+            <p class="text-[12px] text-blue-600">{{rutina.categoria}}</p>
+        </div>
+
+        <div class="duracion rounded-lg px-2 py-0.5 flex items-center gap-2 border border-gray-300">
+            <div class="icono">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock-icon lucide-clock">
+                    <path d="M12 6v6l4 2"/>
+                    <circle cx="12" cy="12" r="10"/>
+                </svg>
+            </div>
+            <p class="text-[12px]">{{rutina.duracionMins}} min</p>
+        </div>
+    </div>
+
+    <div class="numero-ejercicios pl-2">
+        <p class="text-[14px]">Ejercicios ( {{rutina.ejercicios.length}} )</p>
+    </div>
+
+    <div class="lista-ejercicios pl-2">
+        @for (ejercicio of rutina.ejercicios; track $index) {
+            <div class="ejercicio-item flex items-center justify-between py-2">
+                <p class="text-gray-700">{{ejercicio.nombre}}</p>
+                <p class="text-gray-500 text-[12px]">{{ejercicio.series}} x {{ejercicio.repeticionesMax}} - {{ejercicio.repeticionesMax}}</p>
+            </div>
+        }
+    </div>
+
+    <div class="h-px bg-gray-300 w-full"></div>
+
+    <div class="fecha-creacion pl-2">
+        <p class="text-gray-500 text-[12px]">Creada el: {{rutina.fechaCreacion | date: 'dd/MM/yyyy'}}</p>
+    </div>
+</div>
