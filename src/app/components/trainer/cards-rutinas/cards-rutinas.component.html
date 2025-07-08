@@ -58,10 +58,10 @@
     </div>
 
     <div class="lista-ejercicios pl-2">
-        @for (ejercicio of rutina.ejercicios; track $index) {
+        @for (ejercicio of rutina.ejercicios.slice(0,3); track $index) {
             <div class="ejercicio-item flex items-center justify-between py-2">
                 <p class="text-gray-700">{{ejercicio.nombre}}</p>
-                <p class="text-gray-500 text-[12px]">{{ejercicio.series}} x {{ejercicio.repeticionesMax}} - {{ejercicio.repeticionesMax}}</p>
+                <p class="text-gray-500 text-[12px]">{{ejercicio.series}} x {{ejercicio.repeticionesMin}}-{{ejercicio.repecionesMax}}</p>
             </div>
         }
     </div>

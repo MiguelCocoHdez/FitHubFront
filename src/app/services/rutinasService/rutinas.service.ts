@@ -21,7 +21,7 @@ export interface Ejercicio {
   descripcion: string
   series: number
   repeticionesMin: number
-  repeticionesMax: number
+  repecionesMax: number
 }
 
 @Injectable({
