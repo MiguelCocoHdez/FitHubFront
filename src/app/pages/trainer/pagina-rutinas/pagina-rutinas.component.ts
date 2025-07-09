@@ -32,4 +32,18 @@ export class PaginaRutinasComponent implements OnInit {
       }
     })
   }
+
+  refrescarRutinas() {
+    const token = localStorage.getItem('token') || ''
+    this.rutinasService.verRutinasTrainer(this.trainer.id, token).subscribe({
+      next: (data) => {
+        this.rutinas = data
+        console.log('Rutinas actualizadas:', this.rutinas)
+        this.cdr.detectChanges()
+      },
+      error: (error) => {
+        console.log('Error al actualizar las rutinas:', error)
+      }
+    })
+  }
 }

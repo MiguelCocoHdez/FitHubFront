@@ -21,6 +21,7 @@
            @for (rutina of rutinas; track $index) {
             <app-cards-rutinas
             [rutina]="rutina"
+            (refrescar)="refrescarRutinas()"
             />
            }
         </div>
