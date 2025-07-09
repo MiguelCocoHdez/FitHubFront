@@ -43,4 +43,15 @@ export class RutinasService {
       }
     })
   }
+
+  eliminarRutina(id: number, token: string) {
+    return this.http.delete(`${this.apiUrl}/eliminarRutina`, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      },
+      params: {
+        id: id
+      }
+    })
+  }
 }
