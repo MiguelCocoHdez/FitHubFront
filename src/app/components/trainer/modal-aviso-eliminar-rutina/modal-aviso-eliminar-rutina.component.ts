@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-modal-aviso-eliminar-rutina',
@@ -8,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class ModalAvisoEliminarRutinaComponent {
 
+  @Input() nombreRutina!: string
+  @Output() close = new EventEmitter<void>()
+
+  cerrarModal() {
+    this.close.emit()
+  }
 }

@@ -1,7 +1,27 @@
 <div class="modal flex overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-    <div class="relative p-4 w-full max-w-2xl max-h-full">
+    <div class="relative p-8 w-full max-w-2xl max-h-full">
         <div class="relative bg-white rounded-lg shadow-sm">
-            
+            <div class="titulo-modal pt-8 pb-4 px-8">
+                <p class="font-bold text-[18px]">¿Estás seguro?</p>
+            </div>
+
+            <div class="texto-modal px-8">
+                <p class="text-[14px] text-gray-600">Esta acción no se puede deshacer. La rutina "{{nombreRutina}}" será eliminada permanentemente.</p>
+            </div>
+
+            <div class="botones flex justify-end gap-4 px-8 py-4">
+                <div class="boton-cancelar">
+                    <button (click)="close.emit()" class="cursor-pointer text-gray-700 bg-white border border-gray-300 rounded-lg px-4 py-2 hover:bg-gray-100 transition-colors">
+                        Cancelar
+                    </button>
+                </div>
+
+                <div class="boton-confirmar">
+                    <button class="cursor-pointer text-white bg-red-600 rounded-lg px-4 py-2 hover:bg-red-700 transition-colors">
+                        Eliminar Rutina
+                    </button>
+                </div>
+            </div>
         </div>
     </div>   
 </div>
