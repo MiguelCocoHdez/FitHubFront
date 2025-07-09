@@ -17,7 +17,7 @@
             </div>
         </div>
 
-        <div class="container-tarjetas-rutinas mt-16 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+        <div class="container-tarjetas-rutinas mt-16 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 items-stretch">
            @for (rutina of rutinas; track rutina.id) {
             <app-cards-rutinas
             [rutina]="rutina"
