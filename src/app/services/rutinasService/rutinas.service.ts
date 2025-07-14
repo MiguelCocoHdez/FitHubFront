@@ -54,4 +54,12 @@ export class RutinasService {
       }
     })
   }
+
+  asignarRutina(clientId: number, id: number, token: string) {
+    return this.http.post(`${this.apiUrl}/asignarRutina/${clientId}/${id}`, null, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
+  }
 }
