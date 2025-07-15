@@ -1,1 +1,20 @@
-<p>modal-crear-rutina works!</p>
+<div class="modal flex overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="relative p-8 w-full max-w-2xl max-h-full">
+        <div class="relative bg-white rounded-lg shadow-sm p-4">
+            <div class="titulo-modal flex items-center justify-between">
+                <div class="titulo-crear">
+                    <p class="font-bold text-[18px]">Crear Rutina</p>
+                    <p class="text-[14px] text-gray-600">Completa los detalles de tu rutina y agrega los ejercicios</p>
+                </div>
+                <div (click)="cerrarModal()" class="cruz-cerrar cursor-pointer hover:bg-gray-200 p-2 rounded-2xl">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 6 6 18"/>
+                        <path d="m6 6 12 12"/>
+                    </svg>
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+</div>

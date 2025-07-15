@@ -1,13 +1,14 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, signal } from '@angular/core';
 import { Trainer } from '../../../services/trainerService/trainer.service';
 import { SidebarDashboardTrainerComponent } from "../../../components/trainer/sidebar-dashboard-trainer/sidebar-dashboard-trainer.component";
 import { Rutina, RutinasService } from '../../../services/rutinasService/rutinas.service';
 import { CardsRutinasComponent } from "../../../components/trainer/cards-rutinas/cards-rutinas.component";
 import { BotonCrearRutinaComponent } from "../../../components/trainer/boton-crear-rutina/boton-crear-rutina.component";
+import { ModalCrearRutinaComponent } from "../../../components/trainer/modal-crear-rutina/modal-crear-rutina.component";
 
 @Component({
   selector: 'app-pagina-rutinas',
-  imports: [SidebarDashboardTrainerComponent, CardsRutinasComponent, BotonCrearRutinaComponent],
+  imports: [SidebarDashboardTrainerComponent, CardsRutinasComponent, BotonCrearRutinaComponent, ModalCrearRutinaComponent],
   templateUrl: './pagina-rutinas.component.html',
   styleUrl: './pagina-rutinas.component.css'
 })
@@ -15,6 +16,8 @@ export class PaginaRutinasComponent implements OnInit {
 
   trainer!: Trainer
   rutinas!: Rutina[]
+
+  mostrarModal = signal(false)
 
   constructor(private rutinasService: RutinasService, private cdr: ChangeDetectorRef) {}
 
@@ -46,5 +49,9 @@ export class PaginaRutinasComponent implements OnInit {
         console.log('Error al actualizar las rutinas:', error)
       }
     })
+  }
+
+  accionModal() {
+    this.mostrarModal.update(valor => !valor)
   }
 }

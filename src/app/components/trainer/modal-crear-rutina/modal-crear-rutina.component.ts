@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-modal-crear-rutina',
@@ -8,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class ModalCrearRutinaComponent {
 
+  @Output() close = new EventEmitter<void>()
+
+  cerrarModal() {
+    this.close.emit()
+  }
 }
