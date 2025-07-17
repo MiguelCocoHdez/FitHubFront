@@ -14,7 +14,80 @@
                 </div>
             </div>
 
-            
+            <div class="formulario mt-6 flex flex-col gap-4">
+                <form action="">
+                    <div class="nombre-duracion grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="nombre">
+                            <div class="mb-5">
+                                <label for="base-input" class="block mb-2 text-sm font-medium">Nombre de la rutina</label>
+                                <input type="text" id="base-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                            </div>
+                        </div>
+                        
+                        <div class="duracion">
+                            <div class="mb-5">
+                                <label for="base-input" class="block mb-2 text-sm font-medium ">Duración (minutos)</label>
+                                <input type="text" id="base-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="descripcion mb-5">
+                        <label for="base-input" class="block mb-2 text-sm font-medium">Descripción</label>
+                        <textarea id="base-input" rows="4" class="resize-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"></textarea>
+                    </div>
+
+                    <div class="dificultad-categoria grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="dificultad flex flex-col gap-4">
+                            <label class="block text-sm font-medium">Dificultad</label>
+                            <fieldset>
+                                <div class="flex items-center mb-4">
+                                    <input id="dificultad-1" type="radio" name="dificultad" value="PRINCIPIANTE" class="w-4 h-4 border-gray-300 text-black appearance-none cursor-pointer" checked>
+                                    <label class="block ms-2  text-sm font-medium text-gray-900">
+                                    Principiante
+                                    </label>
+                                </div>
+                                <div class="flex items-center mb-4">
+                                    <input id="dificultad-2" type="radio" name="dificultad" value="INTERMEDIO" class="w-4 h-4 border-gray-300 text-black appearance-none cursor-pointer">
+                                    <label class="block ms-2  text-sm font-medium text-gray-900">
+                                    Intermedio
+                                    </label>
+                                </div>
+                                <div class="flex items-center mb-4">
+                                    <input id="dificultad-3" type="radio" name="dificultad" value="AVANZADO" class="w-4 h-4 border-gray-300 text-black appearance-none cursor-pointer">
+                                    <label class="block ms-2  text-sm font-medium text-gray-900">
+                                    Avanzado
+                                    </label>
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="categoria flex flex-col gap-4">
+                            <label class="block text-sm font-medium">Categoría</label>
+                            <fieldset>
+                                <div class="flex items-center mb-4">
+                                    <input id="categoria-1" type="radio" name="categoria" value="CARDIO" class="w-4 h-4 border-gray-300 text-black appearance-none cursor-pointer" checked>
+                                    <label class="block ms-2  text-sm font-medium text-gray-900">
+                                    Cardio
+                                    </label>
+                                </div>
+                                <div class="flex items-center mb-4">
+                                    <input id="categoria-2" type="radio" name="categoria" value="FUERZA" class="w-4 h-4 border-gray-300 text-black appearance-none cursor-pointer">
+                                    <label class="block ms-2  text-sm font-medium text-gray-900">
+                                    Fuerza
+                                    </label>
+                                </div>
+                                <div class="flex items-center mb-4">
+                                    <input id="categoria-3" type="radio" name="categoria" value="FLEXIBILIDAD" class="w-4 h-4 border-gray-300 text-black appearance-none cursor-pointer">
+                                    <label class="block ms-2  text-sm font-medium text-gray-900">
+                                    Flexibilidad
+                                    </label>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
