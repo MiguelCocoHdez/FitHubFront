@@ -1,5 +1,5 @@
 <div class="modal flex overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-    <div class="relative p-8 w-full max-w-2xl max-h-full">
+    <div class="relative p-8 w-full max-w-5xl max-h-full">
         <div class="relative bg-white rounded-lg shadow-sm p-4">
             <div class="titulo-modal flex items-center justify-between">
                 <div class="titulo-crear">
@@ -87,6 +87,43 @@
                         </div>
                     </div>
                 </form>
+            </div>
+
+            <div class="mini-formulario-ejercicios mt-6 flex flex-col gap-4">
+                <p class="font-bold text-[18px]">Ejercicios</p>
+
+                <div class="mini-formulario flex flex-col gap-4 p-4 border border-gray-300 rounded-lg">
+                    <div class="nombre-series grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="nombre-ejercicio">
+                            <label for="ejercicio-nombre" class="block mb-2 text-sm font-medium">Nombre del ejercicio</label>
+                            <input type="text" id="ejercicio-nombre" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                        </div>
+                        
+                        <div class="series">
+                            <label for="ejercicio-series" class="block mb-2 text-sm font-medium">Series</label>
+                            <input type="text" id="ejercicio-series" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                        </div>
+                    </div>
+
+                    <div class="descripcion-ejercicio">
+                        <label for="ejercicio-descripcion" class="block mb-2 text-sm font-medium">Descripción del ejercicio</label>
+                        <textarea id="ejercicio-descripcion" rows="3" class="resize-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"></textarea>
+                    </div>
+
+                    <div class="repeticiones grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="repeticiones-min">
+                            <label for="ejercicio-repeticiones-min" class="block mb-2 text-sm font-medium">Repeticiones mínimas</label>
+                            <input type="text" id="ejercicio-repeticiones-min" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                        </div>
+                        <div class="repeticiones-max">
+                            <label for="ejercicio-repeticiones-max" class="block mb-2 text-sm font-medium">Repeticiones máximas</label>
+                            <input type="text" id="ejercicio-repeticiones-max" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                        </div>
+                    </div>
+
+                    <button class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-2 hover:bg-gray-100 cursor-pointer">+  Agregar Ejercicio</button>
+
+                </div>
             </div>
         </div>
     </div>

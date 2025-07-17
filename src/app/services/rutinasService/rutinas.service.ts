@@ -16,7 +16,6 @@ export interface Rutina {
 }
 
 export interface Ejercicio {
-  id: number
   nombre: string
   descripcion: string
   series: number

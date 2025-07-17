@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { Ejercicio } from '../../../services/rutinasService/rutinas.service';
 
 @Component({
   selector: 'app-modal-crear-rutina',
@@ -9,6 +10,10 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class ModalCrearRutinaComponent {
 
   @Output() close = new EventEmitter<void>()
+
+  ejercicios: Ejercicio[] = []
+
+  constructor() {}
 
   cerrarModal() {
     this.close.emit()
