@@ -13,6 +13,8 @@ export class ModalCrearRutinaComponent {
   @Output() close = new EventEmitter<void>()
 
   crearRuitinaForm!: FormGroup
+  crearEjercicioForm!: FormGroup
+
   ejercicios: Ejercicio[] = []
 
   constructor(private fb: FormBuilder, private rutinasService: RutinasService) {
@@ -24,6 +26,14 @@ export class ModalCrearRutinaComponent {
       duracionMins: [''],
       ejercicios: this.fb.array(this.ejercicios)
     })
+
+    this.crearEjercicioForm = fb.group({
+      nombre: [''],
+      descripcionEjercicio: [''],
+      series: [''],
+      repeticionesMin: [''],
+      repecionesMax: ['']
+    })
   }
 
   cerrarModal() {
@@ -33,6 +43,21 @@ export class ModalCrearRutinaComponent {
   crearRutina() {
     if(this.crearRuitinaForm.valid) {
       console.log(this.crearRuitinaForm.value)
+    }
+  }
+
+  agregarEjercicio() {
+    if(this.crearEjercicioForm.valid) {
+      const nuevoEjercicio: Ejercicio = this.crearEjercicioForm.value
+      this.ejercicios.push(nuevoEjercicio)
+      this.crearEjercicioForm.reset()
+      console.log('Ejercicio añadido:', nuevoEjercicio)
+    }
+  }
+
+  eliminarEjercicio(indice: number) {
+    if (indice >= 0 && indice < this.ejercicios.length) {
+      this.ejercicios.splice(indice, 1)
     }
   }
 }

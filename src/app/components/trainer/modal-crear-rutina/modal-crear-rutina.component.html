@@ -93,38 +93,61 @@
                 <p class="font-bold text-[18px]">Ejercicios</p>
 
                 <div class="mini-formulario flex flex-col gap-4 p-4 border border-gray-300 rounded-lg">
-                    <div class="nombre-series grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="nombre-ejercicio">
-                            <label for="ejercicio-nombre" class="block mb-2 text-sm font-medium">Nombre del ejercicio</label>
-                            <input type="text" id="ejercicio-nombre" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                    <form [formGroup]="crearEjercicioForm">
+                        <div class="nombre-series grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="nombre-ejercicio">
+                                <label for="ejercicio-nombre" class="block mb-2 text-sm font-medium">Nombre del ejercicio</label>
+                                <input formControlName="nombre" type="text" id="ejercicio-nombre" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                            </div>
+                            
+                            <div class="series">
+                                <label for="ejercicio-series" class="block mb-2 text-sm font-medium">Series</label>
+                                <input formControlName="series" type="text" id="ejercicio-series" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                            </div>
                         </div>
-                        
-                        <div class="series">
-                            <label for="ejercicio-series" class="block mb-2 text-sm font-medium">Series</label>
-                            <input type="text" id="ejercicio-series" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+
+                        <div class="descripcion-ejercicio mt-4">
+                            <label for="ejercicio-descripcion" class="block mb-2 text-sm font-medium">Descripción del ejercicio</label>
+                            <textarea formControlName="descripcionEjercicio" id="ejercicio-descripcion" rows="3" class="resize-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"></textarea>
                         </div>
-                    </div>
 
-                    <div class="descripcion-ejercicio">
-                        <label for="ejercicio-descripcion" class="block mb-2 text-sm font-medium">Descripción del ejercicio</label>
-                        <textarea id="ejercicio-descripcion" rows="3" class="resize-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"></textarea>
-                    </div>
-
-                    <div class="repeticiones grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="repeticiones-min">
-                            <label for="ejercicio-repeticiones-min" class="block mb-2 text-sm font-medium">Repeticiones mínimas</label>
-                            <input type="text" id="ejercicio-repeticiones-min" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                        <div class="repeticiones grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                            <div class="repeticiones-min">
+                                <label for="ejercicio-repeticiones-min" class="block mb-2 text-sm font-medium">Repeticiones mínimas</label>
+                                <input formControlName="repeticionesMin" type="text" id="ejercicio-repeticiones-min" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                            </div>
+                            <div class="repeticiones-max">
+                                <label for="ejercicio-repeticiones-max" class="block mb-2 text-sm font-medium">Repeticiones máximas</label>
+                                <input formControlName="repecionesMax" type="text" id="ejercicio-repeticiones-max" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                            </div>
                         </div>
-                        <div class="repeticiones-max">
-                            <label for="ejercicio-repeticiones-max" class="block mb-2 text-sm font-medium">Repeticiones máximas</label>
-                            <input type="text" id="ejercicio-repeticiones-max" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                        </div>
-                    </div>
 
-                    <button class="w-full mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-2 hover:bg-gray-100 cursor-pointer">+  Agregar Ejercicio</button>
-
+                        <button (click)="agregarEjercicio()" class="w-full mt-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-2 hover:bg-gray-100 cursor-pointer">+  Agregar Ejercicio</button>
+                    </form>
                 </div>
             </div>
+
+            @if(ejercicios.length > 0) {
+                <div class="lista-ejercicios flex flex-col gap-4 p-4 border border-gray-300 rounded-lg mt-4">
+                    <p class="font-bold text-[18px]">Ejercicios Agregados ({{ejercicios.length}})</p>
+
+                    @for (ejercicio of ejercicios; track $index) {
+                        <div class="ejercicio bg-gray-50 rounded-lg p-4 flex items-center justify-between">
+                            <div class="info-ejercicio">
+                                <p class="font-bold">{{$index+1}}. {{ejercicio.nombre}}</p>
+                                <p class="text-gray-600 text-[14px]">{{ejercicio.series}} series x {{ejercicio.repeticionesMin}} - {{ejercicio.repecionesMax}} reps</p>
+                            </div>
+
+                            <div (click)="eliminarEjercicio($index)" class="eliminar-ejercicio">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 cursor-pointer hover:text-red-600">
+                                    <path d="M18 6 6 18"/>
+                                    <path d="m6 6 12 12"/>
+                                </svg>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
 
             <div class="botones-finalizar flex gap-4 justify-end mt-6">
                 <button (click)="cerrarModal()" class="mt-4 px-4 py-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-2 hover:bg-gray-100 cursor-pointer">Cancelar</button>
