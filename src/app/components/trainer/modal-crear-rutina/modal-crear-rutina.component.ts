@@ -11,25 +11,27 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 export class ModalCrearRutinaComponent {
 
   @Output() close = new EventEmitter<void>()
+  @Output() rutinaCreada = new EventEmitter<void>()
 
-  crearRuitinaForm!: FormGroup
+  crearRutinaForm!: FormGroup
   crearEjercicioForm!: FormGroup
 
   ejercicios: Ejercicio[] = []
 
   constructor(private fb: FormBuilder, private rutinasService: RutinasService) {
-    this.crearRuitinaForm = this.fb.group({
-      nombreRutina: [''],
+    this.crearRutinaForm = this.fb.group({
+      nombre: [''],
       descripcion: [''],
       nivel: [''],
       categoria: [''],
       duracionMins: [''],
-      ejercicios: this.fb.array(this.ejercicios)
+      ejercicios: this.fb.array([]),
+      trainerId: ['']
     })
 
     this.crearEjercicioForm = fb.group({
       nombre: [''],
-      descripcionEjercicio: [''],
+      descripcion: [''],
       series: [''],
       repeticionesMin: [''],
       repecionesMax: ['']
@@ -40,18 +42,36 @@ export class ModalCrearRutinaComponent {
     this.close.emit()
   }
 
+  avisoRutinaCreada() {
+    this.rutinaCreada.emit()
+  }
+
   crearRutina() {
-    if(this.crearRuitinaForm.valid) {
-      console.log(this.crearRuitinaForm.value)
+    if(this.crearRutinaForm.valid) {
+      this.crearRutinaForm.value.ejercicios = this.ejercicios
+      const trainer = JSON.parse(localStorage.getItem('trainer') || '{}')
+      this.crearRutinaForm.value.trainerId = trainer.id
+      
+      this.rutinasService.crearRutina(this.crearRutinaForm.value, localStorage.getItem('token') || '').subscribe({
+        next: (response) => {
+          console.log('Rutina creada con éxito:', response)
+          this.cerrarModal()
+          this.avisoRutinaCreada()
+        },
+        error: (error) => {
+          console.error('Error al crear la rutina:', error)
+        }
+      })
     }
   }
 
   agregarEjercicio() {
     if(this.crearEjercicioForm.valid) {
       const nuevoEjercicio: Ejercicio = this.crearEjercicioForm.value
+      
       this.ejercicios.push(nuevoEjercicio)
+      
       this.crearEjercicioForm.reset()
-      console.log('Ejercicio añadido:', nuevoEjercicio)
     }
   }
 

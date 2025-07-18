@@ -26,6 +26,6 @@
 
     @if(mostrarModal()) {
         <div class="fixed inset-0 bg-black opacity-80 z-50"></div>
-        <app-modal-crear-rutina (close)="accionModal()" />
+        <app-modal-crear-rutina (close)="accionModal()" (rutinaCreada)="refrescarRutinas()" />
     }
 }

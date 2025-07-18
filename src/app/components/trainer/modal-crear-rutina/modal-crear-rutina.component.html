@@ -15,12 +15,12 @@
             </div>
 
             <div class="formulario mt-6 flex flex-col gap-4">
-                <form [formGroup]="crearRuitinaForm">
+                <form [formGroup]="crearRutinaForm">
                     <div class="nombre-duracion grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div class="nombre">
                             <div class="mb-5">
                                 <label for="base-input" class="block mb-2 text-sm font-medium">Nombre de la rutina</label>
-                                <input formControlName="nombreRutina" type="text" id="base-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                <input formControlName="nombre" type="text" id="base-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                             </div>
                         </div>
                         
@@ -108,7 +108,7 @@
 
                         <div class="descripcion-ejercicio mt-4">
                             <label for="ejercicio-descripcion" class="block mb-2 text-sm font-medium">Descripción del ejercicio</label>
-                            <textarea formControlName="descripcionEjercicio" id="ejercicio-descripcion" rows="3" class="resize-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"></textarea>
+                            <textarea formControlName="descripcion" id="ejercicio-descripcion" rows="3" class="resize-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"></textarea>
                         </div>
 
                         <div class="repeticiones grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
