@@ -32,6 +32,14 @@ export class RutinasService {
 
   constructor(private http: HttpClient) {}
 
+  crearRutina(rutina: Rutina, token: string) {
+    return this.http.post(`${this.apiUrl}/crearRutina`, rutina, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
+  }
+
   verRutinasTrainer(trainerId: number, token: string) {
     return this.http.get<Rutina[]>(`${this.apiUrl}/verRutinasTrainer`, {
       headers: {
