@@ -51,4 +51,8 @@ export class SidebarDashboardTrainerComponent implements OnInit {
   irARutinas(): void {
     this.router.navigate(['/trainer/rutinas'])
   }
+
+  irAMensajes(): void {
+    this.router.navigate(['/trainer/mensajes'])
+  }
 }
